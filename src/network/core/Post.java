@@ -1,32 +1,29 @@
 package network.core;
-import java.util.ArrayList;
 
 /**
- * This class stores information about a news feed post in a 
- * social network. Posts can be stored and displayed. This class
- * serves as a superclass for more specific post types.
+ * This class stores information about the posts. The fields here are the ones
+ * that all the under-classes in this hierachy has in common.
+ * The reason why there are several display method originally had
+ * both author and timestamp in it, but had to split this up to allow the
+ * author to appear on top of display, and timestamp to appear under the
+ * under-class's part of the method.
  * 
- * @author Michael Kölling and David J. Barnes
+ * @author Ole Martin
  * @version 0.2
  */
 public class Post 
 {
     private String username;  // username of the post's author
     private long timestamp;
-    private int likes;
-    private ArrayList<String> comments;
-
+    
     /**
      * Constructor for objects of class Post.
-     * 
-     * @param author    The username of the author of this post.
+     * @param author Name of the post's author.
      */
     public Post(String author)
     {
         username = author;
         timestamp = System.currentTimeMillis();
-        likes = 0;
-        comments = new ArrayList<String>();
     }
 
     /**
@@ -36,34 +33,6 @@ public class Post
     public String getUserName()
     {
         return username;
-    }
-    
-    /**
-     * Record one more 'Like' indication from a user.
-     */
-    public void like()
-    {
-        likes++;
-    }
-
-    /**
-     * Record that a user has withdrawn his/her 'Like' vote.
-     */
-    public void unlike()
-    {
-        if (likes > 0) {
-            likes--;
-        }
-    }
-
-    /**
-     * Add a comment to this post.
-     * 
-     * @param text  The new comment to add.
-     */
-    public void addComment(String text)
-    {
-        comments.add(text);
     }
 
     /**
@@ -79,27 +48,20 @@ public class Post
     /**
      * Display the details of this post.
      * 
-     * (Currently: Print to the text terminal. This is simulating display 
-     * in a web browser for now.)
+     * This method is further built lower in the hierarchy. From this method,
+     * it currently splits to CommentedPost and EventPost.
      */
     public void display()
     {
-        System.out.println(username);
-        System.out.print(timeString(timestamp));
-        
-        if(likes > 0) {
-            System.out.println("  -  " + likes + " people like this.");
-        }
-        else {
-            System.out.println();
-        }
-        
-        if(comments.isEmpty()) {
-            System.out.println("   No comments.");
-        }
-        else {
-            System.out.println("   " + comments.size() + " comment(s). Click here to view.");
-        }
+        System.out.print(username);
+    }
+    
+    /**
+     * Displays the time differense between current and when post was created.
+     */
+    public void displayTimestamp()
+    {
+        System.out.println("   " + timeString(timestamp));
     }
     
     /**
@@ -118,10 +80,10 @@ public class Post
         long seconds = pastMillis/1000;
         long minutes = seconds/60;
         if(minutes > 0) {
-            return minutes + " minutes ago";
+            return "Posted " + minutes + " minutes ago";
         }
         else {
-            return seconds + " seconds ago";
+            return "Posted " + seconds + " seconds ago";
         }
     }
 }

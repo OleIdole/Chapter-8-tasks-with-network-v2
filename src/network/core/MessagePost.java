@@ -1,16 +1,13 @@
 package network.core;
 
-import java.util.ArrayList;
-
 /**
- * This class stores information about a post in a social network news feed. 
- * The main part of the post consists of a (possibly multi-line)
- * text message. Other data, such as author and time, are also stored.
+ * This class extends from CommentedPost and in addition to what it inherits,
+ * it also contains a message.
  * 
- * @author Michael Kölling and David J. Barnes
+ * @author Ole Martin
  * @version 0.2
  */
-public class MessagePost extends Post
+public class MessagePost extends CommentedPost
 {
     private String message;  // an arbitrarily long, multi-line message
 
@@ -25,15 +22,6 @@ public class MessagePost extends Post
         super(author);
         message = text;
     }
-
-    /**
-     * Prints a short summary of the message post containing the author's username
-     */
-    public void printShortSummary()
-    {
-        String author = super.getUserName();
-        System.out.println("Message post from " + author);
-    }
     
     /**
      * Return the text of this post.
@@ -43,5 +31,18 @@ public class MessagePost extends Post
     public String getText()
     {
         return message;
+    }
+    
+    /**
+     * Display the details of this post.
+     * At this point we finish building up the display() method, you can see we
+     * first use the display from Post, then we continue with methods from this
+     * class, finally we add the displayCommented() from commentedPost.
+     */
+    public void display()
+    {
+        super.display();
+        System.out.println(" wrote: " + message);
+        super.displayCommented();
     }
 }

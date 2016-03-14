@@ -3,16 +3,11 @@ package network.core;
 import java.util.ArrayList;
 
 /**
- * The NewsFeed class stores news posts for the news feed in a
- * social network application (like FaceBook or Google+).
+ * This newsfeed is improved gradually by progressing through chapter 8.
+ * Currently it contains a variety of posts.
+ * It has a show method that allows us to display all the content of the posts.
  * 
- * Display of the posts is currently simulated by printing the
- * details to the terminal. (Later, this should display in a browser.)
- * 
- * This version does not save the data to disk, and it does not
- * provide any search or ordering functions.
- * 
- * @author Michael Kölling and David J. Barnes
+ * @author Ole Martin
  * @version 0.2
  */
 public class NewsFeed
@@ -38,9 +33,9 @@ public class NewsFeed
     }
 
     /**
-     * Show the news feed. Currently: print the news feed details
-     * to the terminal. (To do: replace this later with display
-     * in web browser.)
+     * Iterates over all the posts and displays its content.
+     * The display method will go through several classes as they
+     * inherit from eachother.
      */
     public void show()
     {
