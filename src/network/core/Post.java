@@ -61,7 +61,7 @@ public class Post
      */
     public void displayTimestamp()
     {
-        System.out.println("   " + timeString(timestamp));
+        System.out.println("      " + timeString(timestamp));
     }
     
     /**

@@ -43,6 +43,6 @@ public class MessagePost extends CommentedPost
     {
         super.display();
         System.out.println(" wrote: " + message);
-        super.displayCommented();
+        displayCommented();
     }
 }

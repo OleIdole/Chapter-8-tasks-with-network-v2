@@ -54,6 +54,24 @@ public class CommentedPost extends Post
     }
     
     /**
+     * Returns the amount of likes for this post.
+     * @return Returns the amount of likes for this post.
+     */
+    public int getLikes()
+    {
+        return likes;
+    }
+    
+    /**
+     * Returns the amount of comments for this post.
+     * @return Returns the amount of comments for this post.
+     */
+    public int getAmountOfComments()
+    {
+        return comments.size();
+    }
+    
+    /**
      * Display the details of this post.
      * This is not named display() because to get the correct format
      * of the display, we continue to build display() further down and
