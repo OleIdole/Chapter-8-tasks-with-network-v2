@@ -13,8 +13,8 @@ package network.core;
  */
 public class Post 
 {
-    private String username;  // username of the post's author
-    private long timestamp;
+    private final String username;  // username of the post's author
+    private final long timestamp;
     
     /**
      * Constructor for objects of class Post.
@@ -46,22 +46,24 @@ public class Post
     }
 
     /**
-     * Display the details of this post.
+     * Returns the details of this post.
      * 
      * This method is further built lower in the hierarchy. From this method,
      * it currently splits to CommentedPost and EventPost.
+     * @return Returns the details of this post.
      */
-    public void display()
+    public String display()
     {
-        System.out.print(username);
+        return username;
     }
     
     /**
-     * Displays the time differense between current and when post was created.
+     * Returns the time differense between current and when post was created.
+     * @return Returns the time differense between current and when post was created.
      */
-    public void displayTimestamp()
+    public String displayTimestamp()
     {
-        System.out.println("      " + timeString(timestamp));
+        return "\n      " + timeString(timestamp);
     }
     
     /**

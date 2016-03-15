@@ -12,14 +12,14 @@ import java.util.ArrayList;
  */
 public class NewsFeed
 {
-    private ArrayList<Post> posts;
+    private final ArrayList<Post> posts;
 
     /**
      * Construct an empty news feed.
      */
     public NewsFeed()
     {
-        posts = new ArrayList<Post>();
+        posts = new ArrayList<>();
     }
 
     /**
@@ -41,7 +41,7 @@ public class NewsFeed
     {
         // display all posts
         for(Post post : posts) {
-            post.display();
+            System.out.println(post.display());
             System.out.println();   // empty line between posts
         }
     }

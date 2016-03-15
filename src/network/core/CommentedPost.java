@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CommentedPost extends Post
 {
     private int likes;
-    private ArrayList<String> comments;
+    private final ArrayList<String> comments;
     
     /**
      * @param author The username of the author of this post.
@@ -72,26 +72,30 @@ public class CommentedPost extends Post
     }
     
     /**
-     * Display the details of this post.
+     * Returns the details of this post.
      * This is not named display() because to get the correct format
      * of the display, we continue to build display() further down and
      * end up using the displayCommented() in that method.
+     * @return Returns the details of this post.
      */
-    public void displayCommented()
+    public String displayCommented()
     {
+        String commentDetails = "\n";
         if(likes > 0) {
-            System.out.println("   " + likes + " people like this.");
+            commentDetails += "   " + likes + " people like this.";
         }
         else {
-            System.out.println("   Be the first person to like this post!");
+            commentDetails += "   Be the first person to like this post!";
         }
         
         if(comments.isEmpty()) {
-            System.out.println("   No comments.");
+            commentDetails += "\n   No comments.";
         }
         else {
-            System.out.println("   " + comments.size() + " comment(s). Click here to view.");
+            commentDetails += "\n   " + comments.size()
+                    + " comment(s). Click here to view.";
         }
-        super.displayTimestamp();
+        commentDetails += displayTimestamp();
+        return commentDetails;
     }
 }

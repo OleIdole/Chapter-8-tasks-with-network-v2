@@ -9,7 +9,7 @@ package network.core;
  */
 public class MessagePost extends CommentedPost
 {
-    private String message;  // an arbitrarily long, multi-line message
+    private final String message;  // an arbitrarily long, multi-line message
 
     /**
      * Constructor for objects of class MessagePost.
@@ -34,15 +34,18 @@ public class MessagePost extends CommentedPost
     }
     
     /**
-     * Display the details of this post.
+     * Returns the details of this post.
      * At this point we finish building up the display() method, you can see we
      * first use the display from Post, then we continue with methods from this
      * class, finally we add the displayCommented() from commentedPost.
+     * @return Returns the details of this post.
      */
-    public void display()
+    @Override
+    public String display()
     {
-        super.display();
-        System.out.println(" wrote: " + message);
-        displayCommented();
+        String displayString = super.display();
+        displayString += " wrote: " + message;
+        displayString += displayCommented();
+        return displayString;
     }
 }

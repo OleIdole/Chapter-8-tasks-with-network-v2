@@ -10,7 +10,7 @@ package network.core;
  */
 public class EventPost extends Post
 {
-    private String eventType;
+    private final String eventType;
     private int participants;
 
     public EventPost(String author, String eventType)
@@ -20,17 +20,20 @@ public class EventPost extends Post
     }
     
     /**
-     * Display the details of this post.
+     * Returns the details of this post.
      * At this point we finish building up the display() method, you can see we
      * first use the display from Post, then we continue with methods from this
      * class, and finally we add the timestamp from Post.
+     * @return Returns the details of this post.
      */
-    public void display()
+    @Override
+    public String display()
     {
-        super.display();
-        System.out.println("  -  " + "Happening: " + eventType);
-        System.out.println("   " + participants + " people are going to this event.");
-        super.displayTimestamp();
+        String displayString = super.display();
+        displayString += "  -  Happening: " + eventType;
+        displayString += "\n   " + participants + " people are going to this event.";
+        displayString += displayTimestamp();
+        return displayString;
     }
     
     /**
