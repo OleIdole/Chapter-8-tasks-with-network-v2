@@ -76,9 +76,11 @@ public class CommentedPost extends Post
      * This is not named display() because to get the correct format
      * of the display, we continue to build display() further down and
      * end up using the displayCommented() in that method.
+     * It is protected because we only want subclasses to be able
+     * to access it.
      * @return Returns the details of this post.
      */
-    public String displayCommented()
+    protected String displayCommented()
     {
         String commentDetails = "\n";
         if(likes > 0) {

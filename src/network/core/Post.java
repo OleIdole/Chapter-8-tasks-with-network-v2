@@ -59,9 +59,11 @@ public class Post
     
     /**
      * Returns the time differense between current and when post was created.
+     * It is protected because we only want subclasses to be able
+     * to access it.
      * @return Returns the time differense between current and when post was created.
      */
-    public String displayTimestamp()
+    protected String displayTimestamp()
     {
         return "\n      " + timeString(timestamp);
     }
@@ -70,6 +72,7 @@ public class Post
      * Create a string describing a time point in the past in terms 
      * relative to current time, such as "30 seconds ago" or "7 minutes ago".
      * Currently, only seconds and minutes are used for the string.
+     * It is set as private because we only use it in this code currently.
      * 
      * @param time  The time value to convert (in system milliseconds)
      * @return      A relative time string for the given time
